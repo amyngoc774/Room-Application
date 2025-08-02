@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Phone Login</title>
+  <title>Log In</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -18,10 +18,17 @@
       padding: 30px;
       border-radius: 12px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      width: 300px;
+      width: 400px;
     }
     h2 {
       text-align: center;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #555;
     }
     select, input, button {
       width: 100%;
@@ -39,27 +46,39 @@
     button:hover {
       background-color: #218838;
     }
-    .link {
-      margin-top: 20px;
+    .apply-now {
       text-align: center;
+      margin-top: 20px;
     }
-    .link a {
-      color: #007bff;
+    .apply-now a {
       text-decoration: none;
+    }
+    .apply-now button {
+      background-color: #007bff;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Phone Login</h2>
+    <h2>Hi there!</h2>
+    <p>Enter your mobile phone number to log into your account.<br>VOIP numbers are not accepted.</p>
     <form>
-      <label for="country">Country</label>
-      <select id="country" name="country">
+      <label for="country">Select Your Country</label>
+      <select id="country" name="country" required>
         <option value="+880">Bangladesh (+880)</option>
         <option value="+91">India (+91)</option>
         <option value="+1">USA (+1)</option>
         <option value="+44">UK (+44)</option>
+        <option value="+82">South Korea (+82)</option>
         <option value="+61">Australia (+61)</option>
+        <option value="+94">Sri Lanka (+94)</option>
+        <option value="+34">Spain (+34)</option>
+        <option value="+963">Syria (+963)</option>
+        <option value="+41">Switzerland (+41)</option>
+        <option value="+358">Finland (+358)</option>
+        <option value="+92">Pakistan (+92)</option>
+        <option value="+86">China (+86)</option>
+        <!-- Add more countries as needed -->
       </select>
 
       <label for="phone">Phone Number</label>
@@ -67,8 +86,11 @@
 
       <button type="submit">Continue</button>
     </form>
-    <div class="link">
-      <a href="application.html">Go to Application Form</a>
+
+    <div class="apply-now">
+      <a href="application.html">
+        <button type="button">Apply Now</button>
+      </a>
     </div>
   </div>
 </body>
