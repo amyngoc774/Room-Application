@@ -2,100 +2,115 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Room Application Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Room Rental Application</title>
   <style>
     body {
-      font-family: Arial;
-      max-width: 600px;
-      margin: 30px auto;
-      padding: 20px;
+      font-family: Arial, sans-serif;
       background-color: #f4f4f4;
-      border-radius: 10px;
+      margin: 0;
+      padding: 40px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 600px;
     }
     h2 {
       text-align: center;
+      margin-bottom: 25px;
     }
     label {
-      margin-top: 15px;
       display: block;
-      font-weight: bold;
+      margin-top: 15px;
+      margin-bottom: 5px;
     }
-    input, textarea, select {
+    input, select, textarea {
       width: 100%;
       padding: 10px;
-      margin-top: 5px;
-      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+    input[type="file"] {
+      padding: 5px;
     }
     button {
+      margin-top: 25px;
       width: 100%;
-      padding: 12px;
-      background-color: #2d89ef;
+      background-color: #28a745;
       color: white;
-      font-size: 16px;
-      font-weight: bold;
+      padding: 12px;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
+      font-size: 16px;
       cursor: pointer;
     }
     button:hover {
-      background-color: #1b63b8;
+      background-color: #218838;
     }
   </style>
 </head>
 <body>
-  <h2>Room Application Form</h2>
-  <form>
-    <label>Full Name</label>
-    <input type="text" required>
+  <div class="container">
+    <h2>Room Rental Application</h2>
+    <form>
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" name="fullName" required />
 
-    <label>Phone Number</label>
-    <input type="tel" required>
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" required />
 
-    <label>Email</label>
-    <input type="email" required>
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required />
 
-    <label>How many people will rent?</label>
-    <input type="number" min="1" required>
+      <label for="occupants">How many people will rent?</label>
+      <input type="number" id="occupants" name="occupants" min="1" required />
 
-    <label>Do you have pets?</label>
-    <select required>
-      <option value="">Select</option>
-      <option>Yes</option>
-      <option>No</option>
-    </select>
+      <label for="pets">Do you have pets?</label>
+      <select id="pets" name="pets" required>
+        <option value="">-- Select --</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
 
-    <label>Monthly Income</label>
-    <input type="text" required>
+      <label for="income">Monthly Income</label>
+      <input type="text" id="income" name="income" required />
 
-    <label>Place of Employment / Organization</label>
-    <input type="text" required>
+      <label for="employment">Place of Employment/Organization</label>
+      <input type="text" id="employment" name="employment" required />
 
-    <label>Employer's Phone Number</label>
-    <input type="tel" required>
+      <label for="employerPhone">Employer’s Phone Number</label>
+      <input type="tel" id="employerPhone" name="employerPhone" required />
 
-    <label>When will you be moving?</label>
-    <input type="date" required>
+      <label for="moveDate">When will you be moving?</label>
+      <input type="date" id="moveDate" name="moveDate" required />
 
-    <label>How long will you be renting?</label>
-    <input type="text" required>
+      <label for="rentalDuration">How long will you be renting?</label>
+      <input type="text" id="rentalDuration" name="rentalDuration" required />
 
-    <label>Upload ID Card or Driving License (Front)</label>
-    <input type="file" accept="image/*" required>
+      <label for="idFront">Upload ID Card (Front)</label>
+      <input type="file" id="idFront" name="idFront" accept="image/*,.pdf" required />
 
-    <label>Upload ID Card or Driving License (Back)</label>
-    <input type="file" accept="image/*" required>
+      <label for="idBack">Upload ID Card (Back)</label>
+      <input type="file" id="idBack" name="idBack" accept="image/*,.pdf" required />
 
-    <label>Credit Course Report Screenshot</label>
-    <input type="file" accept="image/*" required>
+      <label for="creditScore">Credit Score Report Screenshot</label>
+      <input type="file" id="creditScore" name="creditScore" accept="image/*,.pdf" required />
 
-    <label>Last Three Months Bank Statement</label>
-    <input type="file" accept=".pdf,image/*" required>
+      <label for="bankStatement">Last 3 Months Bank Statement</label>
+      <input type="file" id="bankStatement" name="bankStatement" accept="image/*,.pdf" required />
 
-    <label>SSN Number</label>
-    <input type="text" maxlength="11" placeholder="XXX-XX-XXXX" required>
+      <label for="ssn">SSN Number</label>
+      <input type="text" id="ssn" name="ssn" required />
 
-    <button type="submit">Submit Application</button>
-  </form>
+      <button type="submit">Submit Application</button>
+    </form>
+  </div>
 </body>
 </html>
