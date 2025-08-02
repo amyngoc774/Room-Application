@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Log In</title>
+  <title>Phone Login</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -12,23 +12,17 @@
       justify-content: center;
       height: 100vh;
       background-color: #f4f4f4;
+      margin: 0;
     }
     .container {
       background-color: white;
       padding: 30px;
       border-radius: 12px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      width: 400px;
+      width: 320px;
     }
     h2 {
       text-align: center;
-      margin-bottom: 10px;
-    }
-    p {
-      font-size: 14px;
-      text-align: center;
-      margin-bottom: 20px;
-      color: #555;
     }
     select, input, button {
       width: 100%;
@@ -36,6 +30,7 @@
       padding: 10px;
       border-radius: 6px;
       border: 1px solid #ccc;
+      box-sizing: border-box;
     }
     button {
       background-color: #28a745;
@@ -46,51 +41,95 @@
     button:hover {
       background-color: #218838;
     }
-    .apply-now {
-      text-align: center;
+    .link {
       margin-top: 20px;
+      text-align: center;
     }
-    .apply-now a {
+    .link a {
+      color: #007bff;
       text-decoration: none;
-    }
-    .apply-now button {
-      background-color: #007bff;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h2>Hi there!</h2>
-    <p>Enter your mobile phone number to log into your account.<br>VOIP numbers are not accepted.</p>
+    <p style="text-align: center; font-size: 14px; color: #333;">
+      Enter your mobile phone number to log into your account.<br/>VOIP numbers are not accepted.
+    </p>
     <form>
       <label for="country">Select Your Country</label>
       <select id="country" name="country" required>
-        <option value="+880">Bangladesh (+880)</option>
+        <option value="">-- Select Country --</option>
+        <option value="+1">United States (+1)</option>
+        <option value="+44">United Kingdom (+44)</option>
         <option value="+91">India (+91)</option>
-        <option value="+1">USA (+1)</option>
-        <option value="+44">UK (+44)</option>
-        <option value="+82">South Korea (+82)</option>
+        <option value="+880">Bangladesh (+880)</option>
         <option value="+61">Australia (+61)</option>
-        <option value="+94">Sri Lanka (+94)</option>
+        <option value="+81">Japan (+81)</option>
+        <option value="+86">China (+86)</option>
+        <option value="+33">France (+33)</option>
+        <option value="+49">Germany (+49)</option>
+        <option value="+39">Italy (+39)</option>
+        <option value="+7">Russia (+7)</option>
+        <option value="+55">Brazil (+55)</option>
+        <option value="+234">Nigeria (+234)</option>
+        <option value="+27">South Africa (+27)</option>
+        <option value="+82">South Korea (+82)</option>
         <option value="+34">Spain (+34)</option>
-        <option value="+963">Syria (+963)</option>
+        <option value="+62">Indonesia (+62)</option>
+        <option value="+63">Philippines (+63)</option>
+        <option value="+66">Thailand (+66)</option>
+        <option value="+20">Egypt (+20)</option>
+        <option value="+972">Israel (+972)</option>
+        <option value="+90">Turkey (+90)</option>
+        <option value="+31">Netherlands (+31)</option>
+        <option value="+46">Sweden (+46)</option>
         <option value="+41">Switzerland (+41)</option>
         <option value="+358">Finland (+358)</option>
-        <option value="+92">Pakistan (+92)</option>
-        <option value="+86">China (+86)</option>
-        <!-- Add more countries as needed -->
+        <option value="+420">Czech Republic (+420)</option>
+        <option value="+1-242">Bahamas (+1-242)</option>
+        <option value="+1-246">Barbados (+1-246)</option>
+        <option value="+973">Bahrain (+973)</option>
+        <option value="+375">Belarus (+375)</option>
+        <option value="+32">Belgium (+32)</option>
+        <option value="+591">Bolivia (+591)</option>
+        <option value="+387">Bosnia and Herzegovina (+387)</option>
+        <option value="+267">Botswana (+267)</option>
+        <option value="+673">Brunei (+673)</option>
+        <option value="+359">Bulgaria (+359)</option>
+        <option value="+855">Cambodia (+855)</option>
+        <option value="+237">Cameroon (+237)</option>
+        <option value="+56">Chile (+56)</option>
+        <option value="+57">Colombia (+57)</option>
+        <option value="+506">Costa Rica (+506)</option>
+        <option value="+385">Croatia (+385)</option>
+        <option value="+357">Cyprus (+357)</option>
+        <option value="+45">Denmark (+45)</option>
+        <option value="+253">Djibouti (+253)</option>
+        <option value="+593">Ecuador (+593)</option>
+        <option value="+503">El Salvador (+503)</option>
+        <option value="+372">Estonia (+372)</option>
+        <option value="+251">Ethiopia (+251)</option>
+        <option value="+995">Georgia (+995)</option>
+        <!-- More countries can be added as needed -->
       </select>
 
       <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" placeholder="Enter your number" required />
+      <input type="tel" id="phone" placeholder="Enter your phone number" required />
 
       <button type="submit">Continue</button>
-    </form>
 
-    <div class="apply-now">
-      <a href="application.html">
-        <button type="button">Apply Now</button>
-      </a>
+      <div style="text-align: center; margin-top: 20px;">
+        <a href="application.html">
+          <button type="button" style="padding: 10px 20px; font-size: 16px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            Apply Now
+          </button>
+        </a>
+      </div>
+    </form>
+    <div class="link">
+      <a href="application.html">Go to Application Form</a>
     </div>
   </div>
 </body>
