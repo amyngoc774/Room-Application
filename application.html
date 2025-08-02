@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Room Application Form</title>
+  <style>
+    body {
+      font-family: Arial;
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: #f4f4f4;
+      border-radius: 10px;
+    }
+    h2 {
+      text-align: center;
+    }
+    label {
+      margin-top: 15px;
+      display: block;
+      font-weight: bold;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #2d89ef;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1b63b8;
+    }
+  </style>
+</head>
+<body>
+  <h2>Room Application Form</h2>
+  <form>
+    <label>Full Name</label>
+    <input type="text" required>
+
+    <label>Phone Number</label>
+    <input type="tel" required>
+
+    <label>Email</label>
+    <input type="email" required>
+
+    <label>How many people will rent?</label>
+    <input type="number" min="1" required>
+
+    <label>Do you have pets?</label>
+    <select required>
+      <option value="">Select</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+
+    <label>Monthly Income</label>
+    <input type="text" required>
+
+    <label>Place of Employment / Organization</label>
+    <input type="text" required>
+
+    <label>Employer's Phone Number</label>
+    <input type="tel" required>
+
+    <label>When will you be moving?</label>
+    <input type="date" required>
+
+    <label>How long will you be renting?</label>
+    <input type="text" required>
+
+    <label>Upload ID Card or Driving License (Front)</label>
+    <input type="file" accept="image/*" required>
+
+    <label>Upload ID Card or Driving License (Back)</label>
+    <input type="file" accept="image/*" required>
+
+    <label>Credit Course Report Screenshot</label>
+    <input type="file" accept="image/*" required>
+
+    <label>Last Three Months Bank Statement</label>
+    <input type="file" accept=".pdf,image/*" required>
+
+    <label>SSN Number</label>
+    <input type="text" maxlength="11" placeholder="XXX-XX-XXXX" required>
+
+    <button type="submit">Submit Application</button>
+  </form>
+</body>
+</html>
