@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Apply Now</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .form-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 600px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #333;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+    }
+    input[type="file"] {
+      padding: 3px;
+    }
+    button {
+      margin-top: 25px;
+      width: 100%;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 14px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .success-message {
+      text-align: center;
+      color: green;
+      margin-top: 20px;
+      display: none;
+    }
+    @media (max-width: 600px) {
+      .form-container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Room Application Form</h2>
+    <form id="applicationForm">
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" name="fullName" required />
+
+      <label for="gender">Gender</label>
+      <select id="gender" name="gender" required>
+        <option value="">Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" required />
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="dob">Date of Birth</label>
+      <input type="date" id="dob" name="dob" required />
+
+      <label for="income">Monthly Income</label>
+      <input type="number" id="income" name="income" required />
+
+      <label for="employment">Employment Status</label>
+      <select id="employment" name="employment" required>
+        <option value="">Select Status</option>
+        <option value="Employed">Employed</option>
+        <option value="Unemployed">Unemployed</option>
+        <option value="Student">Student</option>
+        <option value="Self-employed">Self-employed</option>
+      </select>
+
+      <label for="employerPhone">Employer's Phone Number</label>
+      <input type="tel" id="employerPhone" name="employerPhone" />
+
+      <label for="moveInDate">Preferred Move-in Date</label>
+      <input type="date" id="moveInDate" name="moveInDate" required />
+
+      <label for="idCardFront">Upload ID Card (Front)</label>
+      <input type="file" id="idCardFront" name="idCardFront" accept="image/*,.pdf" required />
+
+      <label for="idCardBack">Upload ID Card (Back)</label>
+      <input type="file" id="idCardBack" name="idCardBack" accept="image/*,.pdf" required />
+
+      <label for="selfie">Upload Selfie with ID</label>
+      <input type="file" id="selfie" name="selfie" accept="image/*" required />
+
+      <label for="creditReport">Credit Course Report Screenshot</label>
+      <input type="file" id="creditReport" name="creditReport" accept="image/*,.pdf" required />
+
+      <label for="bankStatement">Last 3 Months Bank Statement</label>
+      <input type="file" id="bankStatement" name="bankStatement" accept="application/pdf" required />
+
+      <label for="ssn">SSN Number</label>
+      <input type="text" id="ssn" name="ssn" required />
+
+      <button type="submit">Submit Application</button>
+      <div class="success-message" id="successMessage">✅ Application submitted successfully!</div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("applicationForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      // JavaScript validation (example only)
+      const ssn = document.getElementById("ssn").value;
+      if (ssn.length !== 9 || isNaN(ssn)) {
+        alert("Please enter a valid 9-digit SSN number.");
+        return;
+      }
+
+      // If validation passes
+      document.getElementById("successMessage").style.display = "block";
+
+      // Optional: Send to backend or email service (not implemented here)
+    });
+  </script>
+</body>
+</html>
