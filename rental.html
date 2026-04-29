@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rental Application</title>
+  <style>
+    :root{--green:#28a745;--green-dark:#218838;}
+    *{box-sizing:border-box}
+    body{font-family:Arial,Helvetica,sans-serif;background:#f4f6fb;margin:0;padding:24px}
+    .card{max-width:720px;margin:0 auto;background:#fff;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.08);padding:24px}
+    h1{margin:0 0 10px;text-align:center}
+    p.sub{margin:0 0 20px;text-align:center;color:#666}
+    label{display:block;margin:12px 0 6px;font-weight:600}
+    input,select{width:100%;padding:12px 14px;border:1px solid #dcdcdc;border-radius:8px;font-size:15px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .note{font-size:12px;color:#777;margin-top:4px}
+    button{width:100%;margin-top:16px;padding:14px;border:0;border-radius:10px;background:var(--green);color:#fff;font-size:16px;font-weight:700;cursor:pointer}
+    button:hover{background:var(--green-dark)}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Rental Application</h1>
+    <p class="sub">Step 1 — Personal details & documents</p>
+    <form action="save_data.php" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="form_type" value="step1"/>
+      
+      <label for="fullName">Full Name</label>
+      <input id="fullName" name="full_name" required/>
+
+      <div class="row">
+        <div>
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" required/>
+        </div>
+        <div>
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" required/>
+        </div>
+      </div>
+
+      <label for="currentAddress">Current Address</label>
+      <input id="currentAddress" name="current_address"/>
+
+      <label for="previousAddress">Previous Address</label>
+      <input id="previousAddress" name="previous_address"/>
+
+      <div class="row">
+        <div>
+          <label for="pets">Pets (Yes/No)</label>
+          <select id="pets" name="pets">
+            <option>No</option>
+            <option>Yes</option>
+          </select>
+        </div>
+        <div>
+          <label for="income">Monthly income (USD)</label>
+          <input id="income" type="number" name="monthly_income" min="0" step="0.01"/>
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <label for="employment">Employment/Organization</label>
+          <input id="employment" name="employment"/>
+        </div>
+        <div>
+          <label for="employerPhone">Employer's phone number</label>
+          <input id="employerPhone" name="employer_phone"/>
+        </div>
+      </div>
+
+      <label for="ssn">SSN Number (will be masked)</label>
+      <input id="ssn" name="ssn"/>
+
+      <label for="credit">Credit Report Screenshot</label>
+      <input id="credit" type="file" name="credit_report" accept="image/*,application/pdf"/>
+      <div class="note">Accepted: image/PDF</div>
+
+      <label for="bank">Last Three Months Bank Statement</label>
+      <input id="bank" type="file" name="bank_statements[]" accept="image/*,application/pdf" multiple/>
+      <div class="note">You can select multiple files</div>
+
+      <div class="row">
+        <div>
+          <label for="idFront">ID Card — Front</label>
+          <input id="idFront" type="file" name="id_front" accept="image/*,application/pdf"/>
+        </div>
+        <div>
+          <label for="idBack">ID Card — Back</label>
+          <input id="idBack" type="file" name="id_back" accept="image/*,application/pdf"/>
+        </div>
+      </div>
+
+      <label for="selfie">Selfie with ID (Left hand)</label>
+      <input id="selfie" type="file" name="selfie_with_id" accept="image/*"/>
+
+      <button type="submit">Submit Application</button>
+    </form>
+  </div>
+</body>
+</html>

